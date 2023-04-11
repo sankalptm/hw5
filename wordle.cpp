@@ -54,10 +54,13 @@ void search(std::string& in,
 
        //cout<<in<<endl;
        //auto dash_finder =dict.find(in);
-       if (dict.find(in)!=dict.end() && index==in.length() && num_empty==0){
+       if (index==in.length()){
+        if (dict.find(in)!=dict.end() && num_empty==0){
          output_words.insert(in);
-         return;
        }
+       return;
+       }
+       
        
          string saved_in=in;
          string saved_float=floating;
@@ -65,13 +68,13 @@ void search(std::string& in,
            return;
          }
         if (in[index]!= '-'){
-          search(in, floating, dict, num_empty, index+1, output_words);
+          return search(in, floating, dict, num_empty, index+1, output_words);
          }
          
            //string::iterator it;
         for(unsigned int i=0; i< floating.length(); i++){
           in[index]=floating[i];
-          floating.erase(0, 1);
+          floating.erase(i, 1);
           search(in, floating, dict, num_empty-1,index+1,output_words);
           in=saved_in;
           floating=saved_float;
