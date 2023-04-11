@@ -21,5 +21,8 @@ std::set<std::string> wordle(
     const std::string& in,
     const std::string& floating,
     const std::set<std::string>& dict);
+void search( std::string& in,
+     std::string& floating,
+     std::set<std::string>& dict, unsigned int num_empty, unsigned int index, std::set<std::string>&output_words);
 
 #endif
